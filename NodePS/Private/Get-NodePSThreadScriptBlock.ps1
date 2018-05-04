@@ -66,7 +66,8 @@
             }
 
             $File = [System.IO.Directory]::GetCurrentDirectory() + $File
-            $MimeType = Get-MimeType -Extension ((Get-ChildItem $File -EA SilentlyContinue).Extension)
+            ###$MimeType = Get-MimeType -Extension ((Get-ChildItem $File -EA SilentlyContinue).Extension)
+            $MimeType = Get-MimeType -Extension ("." + ($file.Split("."))[$file.Split(".").length-1])
 
             # NodePS API Support
             if ($File -like "*.psxml") {
